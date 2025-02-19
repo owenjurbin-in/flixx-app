@@ -363,27 +363,46 @@ function addCommas(num) {
 
 // Init app 
 // functions as a router to determine which page your on and which potential functions, etc. to call 
+// function init() {
+//     switch(global.currentPage) {
+//         case '/':
+//         case '/index.html':
+//             displaySlider()
+//             displayTrendingMovies()
+//         break;
+//         case '/shows.html':
+//             displayTrendingShows()
+//             break;
+//         case '/movie-details.html':
+//             displayMovieDetails()
+//             break;
+//         case '/tv-details.html':
+//             displayShowDetails()
+//             break;
+//         case '/search.html':
+//             search()
+//             break;
+//     }
+//     highlightActiveLink()
+// }
+
 function init() {
-    switch(global.currentPage) {
-        case '/':
-        case '/index.html':
-            displaySlider()
-            displayTrendingMovies()
-        break;
-        case '/shows.html':
-            displayTrendingShows()
-            break;
-        case '/movie-details.html':
-            displayMovieDetails()
-            break;
-        case '/tv-details.html':
-            displayShowDetails()
-            break;
-        case '/search.html':
-            search()
-            break;
+    const page = global.currentPage;
+  
+    if (["/", "/index.html"].includes(page)) {
+      displaySlider();
+      displayTrendingMovies();
+    } else if (page.includes("shows")) {
+      displayTrendingShows();
+    } else if (page.includes("movie-details")) {
+      displayMovieDetails();
+    } else if (page.includes("tv-details")) {
+      displayShowDetails();
+    } else if (page.includes("search")) {
+      search();
     }
-    highlightActiveLink()
-}
+  
+    highlightActiveLink();
+  }
 
 document.addEventListener('DOMContentLoaded', init())
